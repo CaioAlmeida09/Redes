@@ -1,5 +1,5 @@
 import "./index.css";
-
+import { Private } from "./routes/prived";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/home/inicial";
 import { Admin } from "./pages/home/admin";
@@ -12,7 +12,14 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={
+              <Private>
+                <Admin />{" "}
+              </Private>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Erro />} />
         </Routes>
